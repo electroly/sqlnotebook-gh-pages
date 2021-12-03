@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>ISNUMERIC Function - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>ISNUMERIC</code> Function</h1>
+  <p>Determines whether a given value is or can be converted to a numeric data type.</p>
+  <h2>Syntax</h2><code>ISNUMERIC(<i>value</i>)</code><br>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><i>value</i>: scalar<br>
+    The value to inspect.</li>
+  </ul>
+  <h2>Return Value</h2>If the value can be converted to a numeric data type, then 1 is returned. If not, then 0 is
+  returned.<br>
+  <h2>Example<br></h2>
+  <pre>PRINT ISNUMERIC('A');  <i>-- "0"</i><br>PRINT ISNUMERIC('123');  <i>-- "1"</i><br>PRINT ISNUMERIC(3.14);  <i>-- "1"</i>
+</pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

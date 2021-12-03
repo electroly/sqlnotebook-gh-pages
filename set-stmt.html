@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>SET Statement - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>SET</code> Statement</h1>Assigns a new value to a previously declared variable. The new value does not need
+  to be of the same type as the previous value. It is an error to assign a value to an undeclared variable. Use the
+  <a href="declare-stmt.html"><code>DECLARE</code></a> statement to declare variables.
+  <h2>Syntax</h2>
+  <p><tt>SET <i>variable-name</i> = <i>new-value</i>;</tt><br></p>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><i>variable-name</i>: identifier<br>
+    A name beginning with an at sign (<code>@</code>), dollar sign (<code>$</code>), or colon
+    (<code>:</code>).&nbsp;The name must have been previously declared in this script.</li>
+    <li><i>new-value</i>: scalar<br>
+    The value to assign to the variable. It may be a scalar expression or a parentheses-enclosed <code>SELECT</code>
+    statement.</li>
+  </ul>
+  <h2>Example</h2>
+  <pre>DECLARE @a = 1;<br>SET @a = 2;</pre>
+  <ul class="examples"></ul>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

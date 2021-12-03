@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>READ_FILE Function - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>READ_FILE</code> Function</h1>
+  <p>Reads a file line-by-line and returns it in a table. This function is used in the <code>FROM</code> clause of a
+  <code>SELECT</code> statement and can participate in joins as if it were a table.</p>
+  <h2>Syntax</h2><code>READ_FILE(<i>file-path</i>, [<i>file-encoding</i>])</code><br>
+  <h2>Parameters<br></h2>
+  <ul class="args">
+    <li><i>file-path</i>: text<br>
+    The absolute path to the text file to read.</li>
+    <li>
+      <i>file-encoding</i>: integer (optional, 0-65535, default: 0)<br>
+      Indicates the text encoding to use when reading the file. Specify 0 to detect the encoding automatically. Any
+      nonzero integer is treated as a Windows code page number. See <a moz-do-not-send="true" href=
+      "character-encodings-in-csv-and-text-files.html">Character Encodings in CSV and Text Files</a> for a list of
+      these code page numbers.<br>
+    </li>
+  </ul>
+  <h2>Return Value</h2>A table with the following columns:
+  <table>
+    <thead>
+      <tr>
+        <th>Column name</th>
+        <th>Example value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>number</code></td>
+        <td>1<br></td>
+      </tr>
+      <tr>
+        <td><code>line</code></td>
+        <td>"First line of the file"</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Example</h2>
+  <pre><i>-- Returns a table containing the last 50 lines</i><i><br></i><i>-- in "file.txt" in reverse order.</i><br>SELECT *<br>FROM READ_FILE('C:\temp\file.txt')<br>ORDER BY number DESC<br>LIMIT 50;<br><br><i>-- Returns a table containing the contents of</i><i><br></i><i>-- "ShiftJIS.txt", which is read using the Japanese</i><i><br></i><i>-- Shift-JIS encoding (code page 932).</i><br>SELECT * FROM READ_FILE('C:\ShiftJIS.txt', 932);</pre>
+  <ul class="examples"></ul>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

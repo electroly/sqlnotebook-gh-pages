@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>EXECUTE Statement - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>EXECUTE</code> Statement</h1>Executes the script called <span style=
+  "font-style: italic;">script-name</span>, which may be enclosed in quotes if the script name contains spaces or
+  special characters. If a <span style="font-style: italic;">result-variable</span> is specified, then that variable
+  will receive the scalar value, if any, returned from the script. The <span style=
+  "font-style: italic;">result-variable</span> does not need to be declared beforehand; the <code>EXECUTE</code>
+  statement itself will declare the variable if it does not exist. If the script does not call <code>RETURN</code>,
+  then the return value is <code>NULL</code>.<br>
+  <br>
+  A script may define its own input parameters using the <a href="declare-stmt.html"><code>DECLARE PARAMETER</code></a>
+  statement. If parameters are present in the script, then any <code>EXECUTE</code> statement that calls it must
+  provide argument values for those parameters. The exception is if the <code>DECLARE PARAMETER</code> statement
+  includes a default value. If so, then the <code>EXECUTE</code> statement may omit that parameter, or it may use the
+  special keyword <code>DEFAULT</code>; in both cases, the default value defined by the <code>DECLARE PARAMETER</code>
+  statement is used.<br>
+  <h2>Syntax</h2><img src="art/execute-stmt-syntax.svg" alt="" class="railroad" moz-do-not-send="true" width="720"
+  height="224"><br>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><i>result-variable</i>: variable name (optional)<br>
+    If provided, this is a variable name beginning with an at sign (<code>@</code>), dollar sign (<code>$</code>), or
+    colon (<code>:</code>) that the return value of the script will be assigned to. The variable may be declared
+    beforehand, but does not need to be. The <code>EXECUTE</code> statement acts as a variable declaration if the
+    variable does not exist.</li>
+    <li><i>script-name</i>: text or identifier<br>
+    The name of the script to execute.</li>
+    <li><i>parameter-name</i>: variable name<br>
+    The name of the parameter variable inside the script called <span style="font-style: italic;">script-name</span>
+    whose argument value is being set.</li>
+    <li><i>argument-value</i>: scalar<br>
+    The value to pass to the script for the parameter called <span style=
+    "font-style: italic;">parameter-name</span>.</li>
+    <li><tt>DEFAULT</tt>: keyword<br>
+    If <code>DEFAULT</code> is specified instead of an <span style="font-style: italic;">argument-value</span>, then
+    the parameter will use its default value. This is equivalent to omitting the parameter.</li>
+  </ul>
+  <h2>Example</h2>
+  <pre><i>-- Executes the script named "Script2" using default</i><i><br></i><i>-- values for all parameters and ignoring the return value.</i><br>EXECUTE Script2;<br><br><i>-- Executes the script named "Script2" and stores the</i><i><br></i><i>-- return value in the variable @returnValue.</i><br>EXECUTE @returnValue = Script2;<br><br><i>-- Executes the script named "My Script", using quotes</i><i><br></i><i>-- because the name contains whitespace.</i>
+EXECUTE 'My Script';<br><br><i>-- Executes the script named "Script2" and passes two</i><i><br></i><i>-- argument values. @foo and @bar refer to parameters</i><i><br></i><i>-- defined using DECLARE PARAMETER inside "Script2".</i><br>EXECUTE Script2 @foo = 1, @bar = 2;<br><br></pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

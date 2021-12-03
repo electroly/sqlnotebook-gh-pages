@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>DATETIMEFROMPARTS Function - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>DATETIMEFROMPARTS</code> Function</h1>
+  <p>Returns a string formatted like "2015-12-25 06:54:47.152" based on the provided date and time values.</p>
+  <h2>Syntax</h2><code>DATETIMEFROMPARTS(<i>year</i>, <i>month</i>, <i>day</i>, <i>hour</i>, <i>minute</i>,
+  <i>second</i>, <i>millisecond</i>)</code><br>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><i>year</i>: integer<br>
+    Four-digit year.</li>
+    <li><i>month</i>: integer (1-12)<br>
+    Calendar month specified as a 1-based integer.</li>
+    <li><i>day</i>: integer (1-31)<br>
+    Day of the month specified as a 1-based integer.</li>
+    <li><i>hour</i>: integer (0-23)<br>
+    Clock hour expressed as a 0-based integer in 24-hour time.</li>
+    <li><i>minute</i>: integer (0-59)<br>
+    Clock minute.</li>
+    <li><i>second</i>: integer (0-59)<br>
+    Clock second.</li>
+    <li><i>millisecond</i>: integer (0-999)<br>
+    Clock millisecond.</li>
+  </ul>
+  <h2>Return Value</h2>A date/time string formatted like "2015-01-02 05:45:30.123".<br>
+  <h2>Example</h2>
+  <pre><i>-- Prints "2015-01-02 05:45:30.123".</i><br>PRINT DATETIMEFROMPARTS(2015, 1, 2, 5, 45, 30, 123)<br></pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Open source tool for casual data exploration in SQL.">
+<title>SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1>Open source app for casual data exploration in SQL</h1>
+  <p>Import your data from CSV, Excel, Microsoft SQL Server, PostgreSQL, and MySQL. Then use a <a moz-do-not-send=
+  "true" href="https://jupyter.org/">Jupyter</a>-style notebook interface for exploratory queries, and write stored
+  procedures for reusable logic. SQL Notebook is powered by an extended <a href="https://www.sqlite.org/">SQLite</a>
+  engine, supporting both standard SQL queries and SQL Notebook-specific commands and functions.<br></p>
+  <p style="text-align: center"><a href="https://github.com/electroly/sqlnotebook/releases" style=
+  "text-decoration: underline; font-weight: bold;">Download SQL Notebook</a></p>
+  <div style="text-align: center;">
+    <div class="screenshot-border">
+      <a href="art/main-screenshot.png"><img src="art/main-screenshot.png" id="index-screenshot" class=
+      "scale gray-border" moz-do-not-send="true" alt="" name="index-screenshot" width="475" height="432" border=
+      "0"></a>
+    </div>
+  </div><br>
+  <hr width="100%" size="2">
+  <h2>News</h2>
+  <ul>
+    <li><b>2024-06-18</b> - Version 1.2.3 is released. Arm64-based computers are now supported. <a moz-do-not-send=
+    "true" href="https://sqlite.org/releaselog/3_46_0.html">SQLite 3.46.0</a> includes minor bug fixes and adds the
+    ability to use underscores in numeric literals, like 1_999.<br></li>
+    <li><b>2023-11-05</b> - Version 1.2.2 is released. A build for 32-bit Windows computers has been added.
+    <a moz-do-not-send="true" href="https://sqlite.org/releaselog/3_44_0.html">SQLite 3.44.0</a> adds new features
+    including support for <tt>ORDER BY</tt> clauses after the last parameter in aggregate functions like the new SQL
+    Server-compatible <tt>STRING_AGG</tt>.<br></li>
+    <li><b>2023-01-07</b> - Version 1.2.1 is released. This minor release fixes several user reported bugs.
+    <a moz-do-not-send="true" href="https://sqlite.org/releaselog/3_40_1.html">SQLite 3.40.1</a> is now included,
+    adding <code>RIGHT</code> <code>JOIN</code> and <code>FULL OUTER JOIN</code> support to SQL Notebook.<br></li>
+    <li><b>2022-05-07</b> - Version 1.2.0 is released. Choosing column types during CSV/XLS import has been improved
+    with optional auto-detection and the ability to change types for multiple selected columns at once. Non-public
+    schemas in PostgreSQL can now be imported.<br></li>
+    <li><b>2022-03-04</b> - Version 1.1.0 is released. This version includes <a moz-do-not-send="true" href=
+    "https://www.sqlite.org/releaselog/3_38_0.html">SQLite 3.38</a> providing improved JSON functionality. New
+    functions for cryptographic hashes, fuzzy matching, and statistical aggregates from <a moz-do-not-send="true" href=
+    "https://github.com/nalgeon/sqlean">Anton Zhiyanov's sqlean library</a> are now built-in. Additional SQLite
+    extensions can be loaded with the <a moz-do-not-send="true" href=
+    "https://sqlite.org/lang_corefunc.html#load_extension">load_extension function</a>.<br></li>
+  </ul>
+  <div class="screenshot-border" style="float: right; margin-top: 30px; margin-left: 30px;">
+    <a href="art/import-screenshot.png"><img moz-do-not-send="true" src="art/import-screenshot.png" alt="" class=
+    "scale gray-border" width="300" height="231" border="0"></a>
+  </div>
+  <h2>Easily import and export data</h2>
+  <p>CSV and Excel files can be imported into the notebook as local tables. A graphical import wizard and
+  <code>IMPORT</code> script commands are both available.</p>
+  <p>Microsoft SQL Server, PostgreSQL, and MySQL tables can be linked into the notebook and queried interchangeably
+  with local tables. Create a live, real-time link to the server for access to up-to-date data, or copy a snapshot of
+  the data into your notebook for faster queries.<br></p>
+  <p>Tables and scripts can be exported in CSV format.</p>
+  <h2>Run quick queries or write sophisticated scripts</h2>
+  <p>SQL Notebook offers three user interfaces for running SQL queries: pages, scripts, and the console.</p>
+  <p><i>Pages</i> offer a simple <a moz-do-not-send="true" href=
+  "https://en.wikipedia.org/wiki/Notebook_interface">notebook interface</a>, combining documentation and executable
+  code in the same document. Each page contains a series of query and text blocks. Use query blocks to run exploratory
+  SQL queries, embedding the results on the page. Use text blocks to document your findings. When your data changes,
+  re-execute all query blocks at the push of a button.</p>
+  <p><i>Scripts</i> are akin to <a moz-do-not-send="true" href="https://en.wikipedia.org/wiki/Stored_procedure">stored
+  procedures</a> in other SQL databases. Write a series of SQL queries to be executed in order, with support for local
+  variables, parameters, throwing and catching errors, and imperative control flow. Execute your script standalone by
+  pressing F5, or call it from another page or script using <a moz-do-not-send="true" href=
+  "execute-stmt.html"><tt>EXECUTE</tt></a>.<br></p>
+  <p>The <i>console</i> is available for quick throwaway queries at any time by pressing <tt>Ctrl+`</tt> (that's the
+  backtick or tilde key). It collapses to a tab at the bottom of the window. Console results are not saved.<br></p>
+  <div class="screenshot-border" style="float: right; margin-top: 30px; margin-left: 30px;">
+    <a href="art/script-screenshot.png"><img moz-do-not-send="true" src="art/script-screenshot.png" alt="" class=
+    "scale gray-border" width="300" height="253" border="0"></a>
+  </div>
+  <h2>Use familiar programming constructs</h2>
+  <p>Users with prior SQL or other programming language experience will feel right at home in SQL Notebook. The
+  integrated SQLite engine provides support for standard SQL queries like <tt>SELECT</tt> and <tt>INSERT</tt>. SQL
+  Notebook adds additional procedural programming elements similar to those found in <a moz-do-not-send="true" href=
+  "https://en.wikipedia.org/wiki/Transact-SQL">T-SQL</a> and <a moz-do-not-send="true" href=
+  "https://en.wikipedia.org/wiki/PL/pgSQL">PL/pgSQL</a>, such as <tt>DECLARE</tt> and <tt>EXECUTE</tt>.<br></p>
+  <pre>SELECT<br>  CASE<br>    WHEN value % 3 = 0 AND value % 5 = 0<br>      THEN 'FizzBuzz'<br>    WHEN value % 3 = 0<br>      THEN 'Fizz'<br>    WHEN value % 5 = 0<br>      THEN 'Buzz'<br>    ELSE value<br>  END<br>FROM GENERATE_SERIES(1, 100);</pre>
+  <p>Learn more in the <a href="doc.html">documentation</a>:</p>
+  <ul class="tight">
+    <li>Variables: <a href="declare-stmt.html"><code>DECLARE</code></a> • <a href=
+    "set-stmt.html"><code>SET</code></a></li>
+    <li>Control flow: <a href="if-stmt.html"><code>IF</code></a> • <a href="for-stmt.html"><code>FOR</code></a> •
+    <a href="while-stmt.html"><code>WHILE</code></a></li>
+    <li>Error handling: <a href="throw-stmt.html"><code>THROW</code></a> • <a href=
+    "try-catch-stmt.html"><code>TRY</code></a></li>
+    <li>Stored procedures: <a href="execute-stmt.html"><code>EXECUTE</code></a></li>
+  </ul>
+  <h2>Access a rich library of built-in functionality</h2>
+  <p>SQL Notebook is a "batteries included" solution to everyday data analysis needs. A wide variety of functionality
+  is immediately available out of the box. SQL Notebook provides additional commands and functions for data exploration
+  beyond those provided by SQLite.<br></p>
+  <pre style="overflow-x: auto; overflow-y: hidden;"><i>-- Parse CSV and other types of files on-the-fly</i>
+SELECT * FROM READ_CSV('C:\MyData.csv');
+
+<i>-- Import data files into new or existing tables</i>
+IMPORT XLS 'C:\Workbook.xls' WORKSHEET 'Sheet2' INTO my_table;
+
+<i>-- Manipulate dates and times with familiar built-in functions</i>
+SELECT *, DATEADD('day', -1, date_col) AS previous_day FROM my_table;<br><br><i>-- Access the filesystem</i>
+SELECT filename FROM LIST_FILES('C:\') WHERE extension IN ('.csv', '.xls');
+</pre>
+  <p>Learn more in the <a href="doc.html">documentation</a>:</p>
+  <ul class="tight">
+    <li>Full-featured import and export statements: <a href="import-csv-stmt.html"><code>IMPORT CSV</code></a> •
+    <a href="import-xls-stmt.html"><code>IMPORT XLS</code></a> • <a moz-do-not-send="true" href=
+    "import-database-stmt.html"><code>IMPORT DATABASE</code></a> • <a href="export-csv-stmt.html" moz-do-not-send=
+    "true"><code>EXPORT CSV</code></a> • <a href="export-txt-stmt.html"><code>EXPORT TXT</code></a></li>
+    <li>Quick functions for reading files: <a href="list-files-func.html"><code>LIST_FILES</code></a> • <a href=
+    "read-csv-func.html"><code>READ_CSV</code></a> • <a href="read-file-func.html"><code>READ_FILE</code></a> •
+    <a href="download-func.html"><code>DOWNLOAD</code></a></li>
+    <li>Date and time handling: <a href="date-part-func.html"><code>DATEPART</code></a> • <a href=
+    "date-add-func.html"><code>DATEADD</code></a> • <a href="date-diff-func.html"><code>DATEDIFF</code></a> • <a href=
+    "get-date-func.html"><code>GETDATE</code></a></li>
+    <li>Array values: <a href="array-func.html"><code>ARRAY</code></a> • <a href=
+    "array-count-func.html"><code>ARRAY_COUNT</code></a> • <a href="array-get-func.html"><code>ARRAY_GET</code></a> •
+    <a href="array-set-func.html"><code>ARRAY_SET</code></a></li>
+  </ul>
+  <h2>Extensive application help is just an "F1" away</h2>
+  <p>A fully searchable in-application help system is ready to answer your questions. Press F1 to view the index of
+  help documents, or enter a keyword into the "Search Help" box in the upper-right corner of the SQL Notebook window.
+  Both SQLite and SQL Notebook documentation is included. Every available statement and function is documented.
+  <a href="doc.html">The documentation is also available online</a>.</p>
+  <h2>It's free!</h2>
+  <p>SQL Notebook is open source software available free of charge under the popular MIT license. For more information,
+  open the Help menu and click the "License information" menu item.<br></p>
+  <p><b><a href="https://github.com/electroly/sqlnotebook/releases">Download SQL Notebook now!</a></b><br></p>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

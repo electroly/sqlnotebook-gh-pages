@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>SPLIT Function - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>SPLIT</code> Function</h1>
+  <p>Splits a string by a caller-specified separator and either returns the substrings as an <a href=
+  "array-func.html">array</a>, or returns one specific substring.</p>
+  <h2>Syntax</h2><code>SPLIT(<i>text</i>, <i>separator</i>, [<i>which-substring</i>])</code><br>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><i>text</i>: text<br>
+    The string to split up.</li>
+    <li><i>separator</i>: text<br>
+    The string that separates each substring in <i>text</i>.</li>
+    <li><i>which-substring</i>: integer (optional, non-negative)<br>
+    The index of the substring to return. A <i>which-substring</i> value of 0 will return the first substring, 1 will
+    return the second substring, and so on. If no such substring exist in the original string, then <code>NULL</code>
+    is returned.</li>
+  </ul>
+  <h2>Return Value</h2>If <i>which-substring</i> is provided, then the specified substring is returned. If it is not
+  provided, then an array of all the substrings is returned.<br>
+  <h2>Example</h2>
+  <pre>PRINT SPLIT('AAA|BBB|CCC', '|', 1);  <i>-- "BBB"</i><br>PRINT SPLIT('AAA|BBB|CCC', '|', 5);  <i>-- NULL</i><br>PRINT SPLIT('AAA|BBB|CCC', '|');  <i>-- "[AAA, BBB, CCC]"</i><br></pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

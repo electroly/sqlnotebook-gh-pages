@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>Phonetic Matching Functions - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1>Phonetic Matching Functions</h1>
+  <p>These functions provide standard algorithms for phonetic fuzzy matching on strings. They each accept a string as a
+  parameter and return a canonical string representing the pronunciation of the input. The specific meaning of the
+  resulting string depends on the algorithm. These functions support ASCII strings only; they will throw an error if a
+  string containing non-ASCII characters is provided. These functions are provided by the <a moz-do-not-send="true"
+  href="https://github.com/nalgeon/sqlean">sqlean "fuzzy"</a> extension which is built into SQL Notebook.<br></p>
+  <h2>Syntax</h2><code>CAVERPHONE(x) &nbsp; &nbsp; &nbsp; <i>--</i> <i><a moz-do-not-send="true" href=
+  "https://en.wikipedia.org/wiki/Caverphone">Caverphone</a></i><br>
+  PHONETIC_HASH(x, y) <i>-- Spellcheck phonetic code</i><br>
+  SOUNDEX(x) &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <i>--</i> <i><a moz-do-not-send="true" href=
+  "https://en.wikipedia.org/wiki/Soundex">Soundex</a></i><br>
+  RSOUNDEX(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>-- Refined Soundex</i><br></code>
+  <h2>Return Value</h2>Canonical representation of the pronunciation of the input string.<br>
+  <h2>Example</h2>
+  <pre>PRINT SOUNDEX('Robert');  <i>-- 'R163'</i><br>PRINT SOUNDEX('🙂');<i>  </i><i>-- error: non-ASCII string</i><br></pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

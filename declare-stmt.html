@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>DECLARE Statement - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>DECLARE</code> Statement</h1>
+  <p>Creates a new variable. Variables must be declared before use. Variables have script scope. That is, the variable
+  can be used anywhere else in the script, but it will not be visible to other scripts called using <a href=
+  "execute-stmt.html"><code>EXECUTE</code></a>, nor to the parent script if this script was itself called with
+  <code>EXECUTE</code>. Variable names must begin with an at sign (<code>@</code>), dollar sign (<code>$</code>), or
+  colon (<code>:</code>).</p>
+  <p>If the <code>PARAMETER</code> keyword is used, then the variable becomes a parameter to the script. If the script
+  is called using <code>EXECUTE</code>, then the caller must provide a value for this parameter unless the
+  <code>DECLARE PARAMETER</code> statement specifies an <span style="font-style: italic;">value</span>.</p>
+  <p>If the <code>DECLARE</code> statement does not include the <code>PARAMETER</code> keyword and does not specify an
+  <span style="font-style: italic;">value</span>, then the variable takes the initial value of <code>NULL</code>.</p>
+  <p>Unlike other popular SQL scripting languages, SQL Notebook's <code>DECLARE</code> statement does not require a
+  data type to be specified. Variables follow the SQLite convention of allowing any data type to be stored.</p>
+  <h2>Syntax</h2><img src="art/declare-stmt-syntax.svg" alt="" class="railroad" moz-do-not-send="true" width="654"
+  height="84"><br>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><tt>PARAMETER</tt> (keyword)<br>
+    If specified, then the variable is a parameter to the script, for which callers using the <code>EXECUTE</code>
+    statement can specify an argument value. If the <span style="font-style: italic;">value</span> argument is
+    specified, then the parameter is optional and may be omitted by <code>EXECUTE</code> callers. If no <span style=
+    "font-style: italic;">value</span> is specified, then callers must provide an argument value for this
+    parameter.</li>
+    <li><i>name</i> (identifier)<br>
+    A name beginning with an at sign (<code>@</code>), dollar sign (<code>$</code>), or colon
+    (<code>:</code>).&nbsp;The name must not have been previously declared in this script.&nbsp;To change the value of
+    an existing variable, use the <code>SET</code> statement.</li>
+    <li><i>value</i>: scalar<br>
+    If provided, the variable will be assigned this value. It may be a scalar expression or a parentheses-enclosed
+    <code>SELECT</code> statement. If not provided, the variable will be assigned a value of <code>NULL</code>. The
+    value can be changed after declaration using the <code>SET</code> statement.</li>
+  </ul>
+  <h2>Example</h2>
+  <pre><i>-- @a, @b, and @c are local variables.</i><br>DECLARE @a = 1 + 2;<br>PRINT @a;  <i>-- "3"</i><br><br>DECLARE @b = (SELECT COUNT(*) FROM sqlite_master);<br>PRINT @b;  <i>-- "0"</i><br><br>DECLARE @c;<br>IF @c IS NULL<br>    PRINT 'c is null';  <i>-- Prints.</i><br><br><i>-- Creates a parameter variable called @requiredParam. Because</i><i><br></i><i>-- there is no initial value specified, the caller of this script</i><i><br></i><i>-- must provide a value for this parameter.</i><br>DECLARE PARAMETER @requiredParam;<br><br><i>-- Creates a parameter variable called @optionalParam. Because</i><i><br></i><i>-- an initial value of 5 is specified, the caller is not required</i><i><br></i><i>-- to provide a value for this parameter, but may do so if it wants</i><i><br></i><i>-- to override the default value.</i><br>DECLARE PARAMETER @optionalParam = 5;<br></pre>
+  <h2>See Also</h2>
+  <ul>
+    <li>
+      <a moz-do-not-send="true" href="set-stmt.html"><tt>SET</tt> Statement</a><br>
+    </li>
+    <li>
+      <a moz-do-not-send="true" href="execute-stmt.html"><tt>EXECUTE</tt> Statement</a><br>
+    </li>
+  </ul>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

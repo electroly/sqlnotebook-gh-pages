@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>IMPORT DATABASE Statement - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><tt>IMPORT</tt> <tt>DATABASE</tt> Statement</h1>
+  <p>Imports a table, view, or query from a Microsoft SQL Server, PostgreSQL, or MySQL database. The data can be copied
+  into the notebook for fast offline access, or a live link to the remote database can be created.<br></p>
+  <h2>Syntax</h2><img src="art/import-database-stmt-syntax.svg" alt="" class="railroad" moz-do-not-send="true" width=
+  "750" height="464"><br>
+  <h2>Parameters</h2>
+  <ul>
+    <li><i>vendor</i>: text<br>
+    One of the following strings: <tt>'mssql'</tt> (Microsoft SQL Server), <tt>'pgsql'</tt> (PostgreSQL),
+    <tt>'mysql'</tt> (MySQL).<br></li>
+    <li><i>connection-string</i>: text<br>
+    The <a moz-do-not-send="true" href=
+    "https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-syntax">ADO.NET connection
+    string</a> specifying the hostname, credentials, database name, and other connection details. Use the graphical
+    import wizard via the Import menu to produce a connection string, and then copy it into your code.</li>
+    <li><i>src-schema-name</i>: text or identifier (optional)<br>
+    Applies to Microsoft SQL Server only. If provided, then this is the name of the schema in which to find the
+    <i>src-table-name</i>. By default, this is <tt>dbo</tt>. When using MySQL, don't use this parameter; instead,
+    provide the schema name as the <tt>database</tt> parameter of the connection string.<br></li>
+    <li><i>src-table-name</i>: text or identifier (optional)<br>
+    If provided, then this is the name of a remote table to be imported.<br></li>
+    <li><i>sql</i>: text (optional)<br>
+    If provided, then this is an SQL query that returns the rows to be imported. This query is in the remote server's
+    SQL syntax. For instance, this query must be written in <a moz-do-not-send="true" href=
+    "https://docs.microsoft.com/en-us/sql/t-sql/language-reference">Transact-SQL</a> when importing from Microsoft SQL
+    Server.<br></li>
+    <li><i>dst-table-name</i>: text or identifier (optional)<br>
+    If provided, then the table is imported as the specified name, rather than its original name from the remote
+    database.<br></li>
+  </ul>
+  <h2>Options</h2>
+  <ul>
+    <li>
+      <tt>LINK</tt>: integer (0-1, default: 0)<br>
+      This option specifies whether the remote data should be copied into the notebook.
+      <ul class="tight">
+        <li>0 = Copy the data into the notebook. This is a one-time snapshot of the data and offers the fastest
+        querying performance.<br></li>
+        <li>1 = Create a live link to the remote database. This is slower, but avoids copying the data into the
+        notebook and provides access to live data.<br></li>
+      </ul>
+    </li>
+    <li>
+      <tt>TRUNCATE_EXISTING_TABLE</tt>: integer (0-1, default: 0)<br>
+      If the target table name exists, this option indicates whether the existing data rows should be deleted.
+      <ul class="tight">
+        <li>0 = Keep existing rows and append new rows</li>
+        <li>1 = Delete existing rows</li>
+      </ul>
+    </li>
+    <li>
+      <tt>TEMPORARY_TABLE</tt>: integer (0-1, default: 0)<br>
+      If the target table name does not exist, and therefore a new table will be created, this option indicates whether
+      the new table will be a temporary table.
+      <ul class="tight">
+        <li>0 = Use <code>CREATE TABLE</code></li>
+        <li>1 = Use <code>CREATE TEMPORARY TABLE</code></li>
+      </ul>
+    </li>
+  </ul>
+  <h2>Examples<br></h2>
+  <pre><i>-- It's convenient to use a variable to hold the connection string.</i><i><br></i><i>-- The || operator is string concatenation in SQLite.</i><br>DECLARE @connectionString =<br>    'Data Source=localhost\SQLEXPRESS;' ||<br>    'Initial Catalog=Northwind;' ||<br>    'Integrated Security=True';<br><br><i>-- Import the remote table 'foo_bar' into a new table of the same</i><i><br></i><i>-- name in the notebook. A one-time copy of the data is performed.</i><br>IMPORT DATABASE 'mssql'<br>CONNECTION @connectionString<br>TABLE foo_bar;<br><br><i>-- Import a very large remote table by creating a live link. The</i><i><br></i><i>-- data is not copied into the notebook. Instead the remote table is</i><i><br></i><i>-- queried on demand.</i><br>IMPORT DATABASE 'mssql'<br>CONNECTION @connectionString<br>TABLE large_table<br>OPTIONS (LINK: 1);<br></pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>

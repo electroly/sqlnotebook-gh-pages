@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>Statistical Aggregate Functions - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/electroly/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/electroly/sqlnotebook">GitHub</a> <iframe src="github-btn.html?user=electroly&amp;repo=sqlnotebook&amp;type=star&amp;count=true" frameborder="0" scrolling="0" style="width: 100px; height: 20px; margin-bottom: -3px; margin-left: 10px;" id="github-star"></iframe></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1>Statistical Aggregate Functions</h1>
+  <p>These standard statistical functions are provided by the <a moz-do-not-send="true" href=
+  "https://github.com/nalgeon/sqlean">sqlean "stats"</a> extension which is built into SQL Notebook.</p>
+  <h2>Syntax</h2>
+  <pre>MEDIAN(<i>x</i>)<br>PERCENTILE_25(<i>x</i>)<br>PERCENTILE_75(<i>x</i>)<br>PERCENTILE_90(<i>x</i>)<br>PERCENTILE_95(<i>x</i>)<br>PERCENTILE_99(<i>x</i>)<br>PERCENTILE(<i>x</i>, <i>percentile</i>)  <i>-- 0-100</i><br>STDDEV(<i>x</i>)      <i>-- Sample standard deviation</i><br>STDDEV_SAMP(<i>x</i>) <i>-- Alias for STDDEV()</i><br>STDDEV_POP(<i>x</i>)  <i>-- Population standard deviation</i><br>VARIANCE(<i>x</i>)    <i>-- Sample variance</i><br>VAR_SAMP(<i>x</i>)    <i>-- Alias for VARIANCE()</i><br>VAR_POP(<i>x</i>)     <i>-- Population variance</i><br></pre>
+  <h2>Example</h2>
+  <pre>SELECT MEDIAN(value) FROM GENERATE_SERIES(100, 200);  <i>-- 150</i>
+</pre>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2024 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>
